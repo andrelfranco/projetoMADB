@@ -22,11 +22,6 @@
 	    			{!! Form::textarea('descricao', '', ['class' => 'form-control']) !!}
 				</div>
 
-				<div class="form-group">
-					{!! Form::label('usuario_id', 'Usuario') !!}
-					{!!Form::select('usuario_id', $usuarios, null, ['class' => 'form-control'])!!}
-				</div>
-
 				<div class="box-footer">
 					{!! Form::submit('Cadastrar', [ 'class' => 'btn btn-primary' ]) !!}
 				</div>

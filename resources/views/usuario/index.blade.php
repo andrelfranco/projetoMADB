@@ -13,16 +13,16 @@
 				<tbody>
 					<tr>
 						<th>#</th>
-						<th>nome</th>
-						<th>email</th>
-						<th>cnpj</th>
-						<th>telefone</th>
+						<th>Nome</th>
+						<th>Email</th>
+						<th>CNPJ</th>
+						<th>Telefone</th>
 						<th></th>
 					</tr>
 					@foreach ($usuarios as $usuario)	
 						<tr>
 							<td></td>
-							<td>{{ 	$usuario->nome }}</td>
+							<td>{{ 	$usuario->name }}</td>
 							<td>{{ 	$usuario->email }}</td>
 							<td>{{ 	$usuario->cnpj }}</td>
 							<td>{{ 	$usuario->telefone }}</td>

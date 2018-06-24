@@ -11,14 +11,6 @@
     	<div class="box-body">
     		{!! Form::open(['route' => 'usuario.store', 'method' => 'POST']) !!}
 	    		<div class="form-group">
-	    			{!! Form::label('nome', 'Nome') !!}
-	    			{!! Form::text('nome', '', ['class' => 'form-control']) !!}
-	    		</div>
-	    		<div class="form-group">
-	    			{!! Form::label('email', 'Email') !!}
-	    			{!! Form::text('email', '', ['class' => 'form-control']) !!}
-	    		</div>
-	    		<div class="form-group">
 	    			{!! Form::label('cnpj', 'CNPJ') !!}
 	    			{!! Form::text('cnpj', '', ['class' => 'form-control']) !!}
 	    		</div>

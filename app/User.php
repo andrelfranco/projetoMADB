@@ -20,7 +20,7 @@ class User extends Eloquent implements AuthenticatableContract, AuthorizableCont
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'cnpj','telefone'
     ];
 
     /**
@@ -31,4 +31,14 @@ class User extends Eloquent implements AuthenticatableContract, AuthorizableCont
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function servicos()
+    {
+        return $this->belongsToMany(Servico::class);
+    }
+
+    public function contratos()
+    {
+        return $this->belongsToMany(Contrato::class);
+    }
 }

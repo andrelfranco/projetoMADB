@@ -11,8 +11,8 @@
 		<div class="box-body">
 			{!! Form::model($usuario, ['route' => ['usuario.update', $usuario->_id], 'method' => 'PATCH']) !!}
 	    		<div class="form-group">
-	    			{!! Form::label('nome', 'Nome') !!}
-	    			{!! Form::text('nome', null, ['class' => 'form-control']) !!}
+	    			{!! Form::label('name', 'Nome') !!}
+	    			{!! Form::text('name', null, ['class' => 'form-control']) !!}
 	    		</div>
 	    		<div class="form-group">
 	    			{!! Form::label('email', 'Email') !!}

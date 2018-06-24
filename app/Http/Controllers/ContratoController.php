@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Servico;
+use App\Contrato;
 use Auth;
 
-class UsuarioController extends Controller
+class ContratoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,18 +17,19 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = User::all();
-        return view('usuario.index', compact('usuarios'));
+        //
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responsewith
      */
-    public function create()
+    public function create($id_servico)
     {
-        return view('usuario.create');
+        //$servico = Servico::find($id_servico);
+        $servico = Servico::with('usuarios')->find($id_servico);
+        return view('contrato.create', compact('servico'));
     }
 
     /**
@@ -35,16 +38,20 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id_servico)
     {
+        $usuario = User::find(Auth::user()->_id);
+        $servico = Servico::find($id_servico);
 
-        //User::create($request->all());
-        $user= Auth::user();
-        $usuario = User::find($user->_id);
-        $usuario->update($request->all());
+        $contrato = Contrato::create($request->all());
 
-        return redirect()->route('usuario.index');
+        $contrato->servico()->save($servico);
+        $contrato->usuario()->save($usuario);
 
+        //$contrato = Contrato::with('usuario', 'servico')->find($contrato->id);
+        //dd($contrato);
+
+        return redirect()->route('servico.index');
     }
 
     /**
@@ -55,8 +62,7 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        $usuario = User::find($id);
-        return view('usuario.show', compact('usuario'));
+        //
     }
 
     /**
@@ -65,11 +71,9 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     public function edit($id)
     {
-        $usuario = User::find($id);
-        return view('usuario.edit', compact('usuario'));
+        //
     }
 
     /**
@@ -79,10 +83,9 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $usuario)
+    public function update(Request $request, $id)
     {
-        $usuario->update($request->all());
-        return redirect()->route('usuario.index');
+        //
     }
 
     /**
@@ -93,15 +96,6 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $usuario = User::find($id);
-        $usuario_session = Auth::user();
-
-        if($usuario->_id = $usuario_session->_id)
-        {
-        }else{
-            User::find($id)->delete();
-        }
-        return redirect()->route('usuario.index');
-        
+        //
     }
 }

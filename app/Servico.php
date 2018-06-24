@@ -15,8 +15,13 @@ class Servico extends Eloquent
 
     public function usuarios()
     {
-    	 return $this->belongsToMAny(Usuario::class);
+    	 return $this->belongsToMAny(User::class);
         //return $this->belongsTo('App\Usuario', 'usuario_id');
+    }
+
+    public function contratos()
+    {
+        return $this->belongsToMany(Contrato::class);
     }
 
 }

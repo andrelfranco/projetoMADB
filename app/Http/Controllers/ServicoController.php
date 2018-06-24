@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Usuario;
+use App\User;
 use App\Servico;
+use Auth;
 
 
 class ServicoController extends Controller
@@ -16,8 +17,8 @@ class ServicoController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::all();
-        //dd($usuarios);
+        $usuarios = User::all();
+
         return view('servico.index', compact('usuarios'));
     }
 
@@ -29,8 +30,10 @@ class ServicoController extends Controller
     public function create()
     {
         //$usuarios = Usuario::all();
-        $usuarios = Usuario::all()->pluck('nome', '_id');
-        return view('servico.create', compact('usuarios'));
+        //$usuarios = User::all()->pluck('nome', '_id');
+        //return view('servico.create', compact('usuarios'));
+
+        return view('servico.create');
     }
 
     /**
@@ -62,7 +65,7 @@ class ServicoController extends Controller
         *DEU CERTO
         *
         */
-        $usuario = Usuario::find($request->usuario_id);
+        $usuario = User::find(Auth::user()->_id);
         //$usuario = Usuario::with('servicos')->find($request->usuario_id);
         //dd($usuario);
         //////////////////////////////////
@@ -84,9 +87,10 @@ class ServicoController extends Controller
      */
     public function show($id)
     {
-        $servico = Servico::with('usuarios')->find($id);
+        $servico = Servico::with('usuarios', 'contratos')->find($id);
+        $avaliacao = $servico->contratos()->get()->avg('avaliacao');
 
-        return view('servico.show', compact('servico'));
+        return view('servico.show', compact('servico', 'avaliacao'));
 
     }
 

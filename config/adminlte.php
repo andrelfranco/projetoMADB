@@ -1,5 +1,6 @@
 <?php
 
+
 return [
 
     /*
@@ -32,7 +33,7 @@ return [
 
     'logo' => 'Projeto<b>MADB</b>',
 
-    'logo_mini' => '<b>MADB</b>',
+    'logo_mini' => '<b>BD</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +46,7 @@ return [
     |
     */
 
-    'skin' => 'red',
+    'skin' => 'blue',
 
     /*
     |--------------------------------------------------------------------------
@@ -115,12 +116,12 @@ return [
             'icon'  => 'users',
             'submenu'  => [
                 [
-                    'text'        => 'Listar',
+                    'text'        => 'Listar Todos',
                     'route'         => 'usuario.index',
                     'icon'        => 'list',
                 ],
                 [
-                    'text'        => 'Cadastrar',
+                    'text'        => 'Completar Cadastro',
                     'route'         => 'usuario.create',
                     'icon'        => 'plus',
                 ],
@@ -143,67 +144,23 @@ return [
                 ],
             ],
         ],
-        'ACCOUNT SETTINGS',
+        'Minha Conta',
         [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
-            'icon' => 'lock',
-        ],
-        [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
-            'submenu' => [
+            'text' => 'Perfil',
+            'url'  => '#',
+            'icon'  => 'gears',
+            'submenu'  => [
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text'        => 'Visualizar',
+                    'route'         => 'meu-perfil',
+                    'icon'        => 'list',
                 ],
                 [
-                    'text'    => 'Level One',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text'        => 'Cadastrar',
+                    'route'         => 'servico.create',
+                    'icon'        => 'plus',
                 ],
             ],
-        ],
-        'LABELS',
-        [
-            'text'       => 'Important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
         ],
     ],
 

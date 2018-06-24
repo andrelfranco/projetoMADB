@@ -23,7 +23,7 @@
 					@if(isset($usuario->servico_ids))
 						@foreach($usuario->servicos as $servico)
 							<tr>
-								<td>{!! $usuario->nome !!}</td>
+								<td>{!! $usuario->name !!}</td>
 								<td>{!! $usuario->cnpj !!}</td>
 								<td>{!! $servico->titulo !!}</td>
 								<td>
